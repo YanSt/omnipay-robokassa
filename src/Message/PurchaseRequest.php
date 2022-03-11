@@ -18,7 +18,7 @@ class PurchaseRequest extends AbstractRequest
             'purse', 'amount', 'currency', 'description'
         );
 
-        return [
+        $data = [
             'InvId' => $this->getInvId(),
             'MerchantLogin' => $this->getPurse(),
             'OutSum' => $this->getAmount(),
@@ -28,7 +28,18 @@ class PurchaseRequest extends AbstractRequest
             'SignatureValue' => $this->generateSignature(),
             'IsTest' => (int) $this->getTestMode(),
             'Receipt' => $this->getReceipt(),
-        ] + $this->getCustomFields();
+        ];
+
+        if ($this->getRecurring() !== null) {
+            $data['Recurring'] = true;
+        }
+
+        if ($this->getPreviousInvoiceID() !== null) {
+            $data['PreviousInvoiceID'] = $this->getPreviousInvoiceID();
+        }
+
+
+        return $data + $this->getCustomFields();
     }
 
     public function generateSignature()

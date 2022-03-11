@@ -174,4 +174,24 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('secretKey2', $value);
     }
 
+    public function getRecurring()
+    {
+        return $this->getParameter('Recurring');
+    }
+
+    public function setRecurring($value)
+    {
+        return $this->setParameter('Recurring', $value);
+    }
+
+    public function getPreviousInvoiceID()
+    {
+        return $this->getParameter('PreviousInvoiceID');
+    }
+
+    public function setPreviousInvoiceID($value)
+    {
+        return $this->setParameter('PreviousInvoiceID', $value);
+    }
+
 }
