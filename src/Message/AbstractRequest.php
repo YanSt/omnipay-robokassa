@@ -194,4 +194,13 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('PreviousInvoiceID', $value);
     }
 
+    public function getInvoiceID()
+    {
+        return $this->getParameter('InvoiceID');
+    }
+
+    public function setInvoiceID($value)
+    {
+        return $this->setParameter('PreviousInvoiceID', $value);
+    }
 }

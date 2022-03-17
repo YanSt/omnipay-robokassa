@@ -36,6 +36,9 @@ class PurchaseRequest extends AbstractRequest
 
         if ($this->getPreviousInvoiceID() !== null) {
             $data['PreviousInvoiceID'] = $this->getPreviousInvoiceID();
+            $data['InvoiceID'] = $this->getInvId();
+            unset($data['IncCurrLabel']);
+            unset($data['InvId']);
         }
 
 
